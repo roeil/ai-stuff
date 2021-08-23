@@ -201,12 +201,12 @@ class MinesweeperAI():
             5) add any new sentences to the AI's knowledge base
                if they can be inferred from existing knowledge
         """
-        #print('*************************')
+        
         self.mark_safe(cell)
         self.moves_made.add(cell)
 
 #            
-        #print('555555555')        
+              
         if cell[0]==self.height-1:
                 if (cell[1]>0) and (cell[1]<(self.width-1)):
                     sentence=Sentence(((cell[0],cell[1]+1),(cell[0],cell[1]-1),(cell[0]-1,cell[1]+1),(cell[0]-1,cell[1]-1),(cell[0]-1,cell[1])),count)

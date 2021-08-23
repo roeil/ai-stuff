@@ -1,0 +1,8 @@
+- 3 convolutional layers with up to ~40 filters each did better than a single such layer, but more layers only slowed down while not meaningfuly improving the training.
+- A single max-pooling layers following the convolutional layers is usually enough.
+- The filters should be squared in shape and no more than 4x4 in size.
+- Applying batch normalization dramatically improves the accuracy.
+- 'relu' for activation of hidden layers, 'softmax' for output layer, 'categorical_crossentropy' for loss, and 'adam' as optimizer is usually the ideal choice out of the standard options I tried (sigmoid, elu, selu, adamax, RMSprop, KLD, etc. respectively). 
+- Dense first hidden layer with >100 nodes followed by a dense layer with >10 and <20 nodes keeps he accuracy above 90% 
+- A single dropout layer with ~10% dropout rate usually suffices to avoid overfitting.
+- The bigger the network, the more parameters it has to train, and the slower the training is.

@@ -1,0 +1,574 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Aug 23 10:06:57 2020
+
+@author: roy
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+import numpy as np
+import math
+r=65
+a,b=-12,10
+n=100
+a=12
+p=.051
+rng=np.linspace(-6,6,n)
+rngy=np.linspace(a,-a,n)
+rngx=np.linspace(-a,a,n)
+psq=[]; psq2=[]
+xy_1=[]
+
+#SQUARE
+
+rr=1.2
+for x in rngx:
+    for y in rngy:
+
+
+        if np.random.choice([1,-1],p=[p,1-p])>0:
+          if (x<-rr and x>-(a) and y<(a) and y>rr):# \
+            
+          #or ( x>rr and x<(a) and y<-rr and y>-(a)):
+            #p.append((x+r1,y+r2))
+            psq.append((x,y))
+          if (x<(a) and x>rr and y>rr and y<(a) ) or ( x<-rr and x>-(a) and y<-rr and y>-(a)) or ( x>rr and x<(a) and y<-rr and y>-(a)):
+            psq2.append((x,y))
+
+
+
+
+from IPython.display import clear_output
+#%matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use('seaborn-whitegrid')
+
+
+xs=[i[0] for i in psq]
+ys=[i[1] for i in psq]
+
+
+xs_2=[i[0] for i in psq2]
+ys_2=[i[1] for i in psq2]
+
+
+
+##################
+
+
+# # #Circle
+
+# r=65
+# a,b=-12,10
+# n=500
+# rng=np.linspace(-6,6,n)
+# rngy=np.linspace(a,-a,n)
+# rngx=np.linspace(-a,a,n)
+# p=[]
+# xy_1=[]
+# for x in rngx:
+#     for y in rngy:
+#         #xy.append(((x,y)))
+#         #z= rng[x]**2+rng[y]**2
+#         # z=-1/(1+ math.exp((-1)*((1/(1+math.exp((-1)*(x*w1+y*w2+b1))))*(w3)))) -\
+#         # 1/(1+ math.exp((-1)*((1/(1+math.exp((-1)*(x*w4+y*w5+b2))))*(w6))))-\
+#         # 1/(1+ math.exp((-1)*((1/(1+math.exp((-1)*(x*w7+y*w8+b3))))*(w9))))
+#         z=x**2+y**2-r
+#         xy_1.append(z)
+#         r1=np.random.randint(-7,7)*0.17
+#         r2=np.random.randint(-7,7)*0.17
+#         if z<0.1 and z>-0.1:
+#           p.append((x+r1,y+r2))
+
+
+# r=4.25
+# a,b=-6,6
+# a=-12
+# n=500
+# rng=np.linspace(-6,6,n)
+# rngy=np.linspace(a,-a,n)
+# rngx=np.linspace(-a,a,n)
+# p_2=[]
+# xy_2=[]
+# for x in rngx:
+#     for y in rngy:
+#         #xy.append(((x,y)))
+#         #z= rng[x]**2+rng[y]**2
+#         # z=-1/(1+ math.exp((-1)*((1/(1+math.exp((-1)*(x*w1+y*w2+b1))))*(w3)))) -\
+#         # 1/(1+ math.exp((-1)*((1/(1+math.exp((-1)*(x*w4+y*w5+b2))))*(w6))))-\
+#         # 1/(1+ math.exp((-1)*((1/(1+math.exp((-1)*(x*w7+y*w8+b3))))*(w9))))
+#         z=x**2+y**2-r
+#         xy_2.append(z)
+#         r1=np.random.randint(-5,5)*0.43
+#         r2=np.random.randint(-5,5)*0.43
+#         if z<0.1 and z>-0.1:
+#           p_2.append((x+r1,y+r2))
+#           #p_2.append((x,y))         
+# xs=[i[0] for i in p]
+# ys=[i[1] for i in p]
+
+
+# xs_2=[i[0] for i in p_2]
+# ys_2=[i[1] for i in p_2]
+
+#####################
+
+# plt.scatter(x,y)
+# plt.show()
+axes = plt.gca()
+axes.set_xlim([a,-a])
+axes.set_ylim([a,-a])
+#plt.contourCircle()  (x,y,'o', color='black')
+# p
+# xs
+#ys
+#plt.plot(-1.5,1.6,'ro') 
+plt.scatter(xs,ys,color='k') 
+#plt.scatter(xs_2,ys_2, color='g') 
+plt.scatter(xs_2,ys_2, color='g')
+
+#p
+
+#plt.imshow(xy4.T)
+plt.show()
+#clear_output()
+#xs_2
+
+
+a=-12
+N=50
+rngy=np.linspace(a,-a,N)
+rngx=np.linspace(-a,a,N)
+
+
+
+ss=[(xs[i],ys[i],1) for i in range(len(xs))]
+ss_2=[(xs_2[i],ys_2[i],0) for i in range(len(xs_2))]
+
+
+
+
+s=[[int(s[0]),int(s[1])] for s in ss]
+s2=[[int(s[0]),int(s[1])] for s in ss_2]
+l=[]
+for x in rngx:
+  for y in rngy:
+    if [int(x),int(y)] not in s+s2:
+      l.append((x,y,0))
+    # if [int(y),int(x)] in s+s2:
+      
+    #   print((int(y),int(x)))
+
+
+import pandas as pd 
+
+df_z=pd.DataFrame(l)
+df_z=df_z.sample(frac=1).reset_index(drop=True)
+
+
+
+#pd.concat([df, df_z[1:300]])
+l
+a
+
+plt.scatter(df_z[1],df_z[0], color='b',alpha=0.1)
+
+
+import seaborn as sns
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+#%matplotlib inline
+
+
+b1=3.7;b2=-3.5;b3=-3.9
+w1=0.28;w2=1.9;w3=5.5
+w4=-1.2;w5=1.2;w6=-5.7
+w7=1.7;w8=0.55;w9=-5.6
+
+def plot2(W1,W2,B,train, r=0.98, concave=False):
+
+
+  W1=W1.reshape(-1,1)
+  import math
+  xx=[];yy=[];zz=[]
+  n_=100
+  a=12
+  rng=np.linspace(-6,6,n_)
+  rngx=np.linspace(-a,a,n_)
+  rngy=np.linspace(a,-a,n_)
+  p3=[]; p4=[]; p5=[]
+  xy_x=[]
+  xy_x2=[]
+  for x in rngx:
+      for y in rngy:
+
+          o=[]
+
+          for i in range(0,n*2,2):
+            #print(i,i+1,int(i/2))
+          
+            o.append(sigmoid(W1[i]*x+W1[i+1]*y+B[int(i/2)])*W2[int(i/2)])
+
+          z=sum(o)
+          
+          xy_x.append(z)
+
+
+
+
+
+  xy4=np.array(xy_x).reshape(n_,n_)
+
+
+
+#TAKE QUANTILES (r)
+  if concave:
+    r=1-r
+  pp=[]
+  A=np.sort(xy4.reshape(1,-1))[0]
+  for i in range(n_):
+    for j in range(n_):
+
+      if concave:
+        if xy4[i,j]<=max(set(list(A[:int(len(A)*r)]))):
+          pp.append((rngx[i],rngy[j]))
+      else:
+        
+        if xy4[i,j]>=min(set(list(A[int(len(A)*r):]))):
+          pp.append((rngx[i],rngy[j]))
+
+
+        
+
+
+  pp_x=[i[0] for i in pp]
+
+  pp_y=[i[1] for i in pp]
+
+
+
+  plt.rcParams["axes.grid"] = False
+
+
+
+  # plt.scatter(xs,ys,color='k', alpha=0.1) 
+  # #plt.scatter(xs_2,ys_2, color='g') 
+  # plt.scatter(xs_2,ys_2, color='g', alpha=0.1)
+
+
+  
+  
+
+  fig, ax = plt.subplots()
+  
+  df_2=pd.DataFrame([pp_x,pp_y])
+
+  sns.kdeplot(df_2.T, ax=ax)
+
+
+  
+  R=15
+
+  #sns.scatterplot(x=pp_x, y=pp_y, ax=ax).set(xlim=(-R,R),ylim=(-R,R))
+  sns.scatterplot(x=xs, y=ys, ax=ax).set(xlim=(-R,R),ylim=(-R,R))
+  sns.scatterplot(x=xs_2, y=ys_2, ax=ax).set(xlim=(-R,R),ylim=(-R,R))
+
+  # sns.scatterplot(train.iloc[np.where(train[2]==1)[0],:][0],train.iloc[np.where(train[2]==1)[0],:][1], ax=ax, color='g', alpha=.1)
+  # sns.scatterplot(train.iloc[np.where(train[2]==0)[0],:][0],train.iloc[np.where(train[2]==0)[0],:][1], ax=ax, color='b',alpha=.1)
+
+
+
+  
+  
+  
+
+  plt.show()
+
+  xy4=np.array(xy_x).reshape(100,100)
+
+  plt.imshow(xy4)
+  
+  plt.show()
+
+
+
+  ################### WIREFRAME
+#   x=np.array([[x]*100 for x in rngx])
+
+#   arr=[]
+#   for i in range(100):
+#     arr.append(rngy)
+#   y=np.array(arr)
+
+#   z=xy4
+
+#   fig = plt.figure()
+#   ax = fig.add_subplot(111, projection = '3d')
+
+#   #x, y, z = axes3d.get_test_data()
+
+#   ax.plot_wireframe(x, y, z, rstride = 2, cstride = 2)
+  
+
+
+#   plt.tight_layout()
+#   plt.show()
+  #################
+
+
+  print("max: ",max(xy_x),"min: ", min(xy_x))
+  print("abs(min-max): ", np.abs(min(xy_x)-max(xy_x)))
+  return max(xy_x)
+
+
+#with batch option 
+import copy
+
+n=12
+BATCH=10
+eta= 0.20917108530725972087075341070509703508578570710510510107107#0.006512
+import math
+#import copy
+W1=np.array(np.random.normal(0, 1, n*2)).reshape(n,2)
+
+W2=np.random.normal(0, 1, n)
+
+B=np.random.normal(0, 1, n)
+
+
+
+
+
+BCC=copy.deepcopy(B)
+W1CC=copy.deepcopy(W1)
+W2CC=copy.deepcopy(W2)
+epochs=113400
+a2=[]
+def sigmoid(z):
+  #print(z)
+  # if z<-200:
+  #     return 0
+  try:
+    sig= 1/(1+np.exp(-z))
+  except:
+    sig= 1/(1+np.exp(-z*0))
+
+  return sig
+
+
+def softmax(z):
+  res=np.exp(z)/np.sum(np.exp(z))
+  return res
+
+def forward(W1,W2,B, X):
+  if sum(np.isnan(W1))[0]==n:
+    W1=np.array(np.random.normal(0, 1, n*2)).reshape(n,2)
+  if sum(np.isnan(B))==n:
+    B=np.array(np.random.normal(0, 1, n))
+  if sum(np.isnan(W2))==n:
+    W2=np.array(np.random.normal(0, 1, n))
+  Z1=[np.dot(W1[i],X[0])+B[i] for i in range(n)]
+ # print("Z1: ", Z1)
+ 
+  
+  A1=[sigmoid(Z1[i]  ) for i in range(n)]
+
+  A2=[sigmoid(A1[i]*W2[i]   ) for i in range(n)]
+  O1=A1*W2
+  #O2=[np.exp(O)/sum([np.exp(o) for o in O1]) for O in O1]
+  
+
+
+
+#######
+  O1=np.array(Z1)
+  A1=sigmoid(O1)
+  O2=np.dot(A1,W2)
+  
+  #E=
+
+#########
+
+
+
+  #O1(W1)->A1(O1,W1)->O2(A1)->A2(O2,W2)->E(A2,y)
+
+
+ # print("A1 FWD:",A1)
+  return (A1,sum(A2),A2,O2,O1,Z1)
+
+def backward(eta,y, A1,A2_sum,W1,W2,X,B, A2, i,O2,O1,Z1):
+  #print("A1 BCK: ", A1)
+  #eta=0.1
+  if sum(np.isnan(W1))[0]==n:
+    W1=np.array(np.random.normal(0, 1, n*2)).reshape(n,2)
+  if sum(np.isnan(B))==n:
+    B=np.array(np.random.normal(0, 1, n))
+  if sum(np.isnan(W2))==n:
+    W2=np.array(np.random.normal(0, 1, n))
+
+
+  y=np.array(y)
+  W2C=copy.deepcopy(W2)
+  O2=np.array(O2)
+
+
+  #########################
+  
+  
+  ###########
+  dE_dO2=-1*((y*(1/O2)+(1-y)*(1/(1-O2)))) 
+  
+  dO2_dW2=A1
+    
+  dO2_dA1=W2
+  try:
+    dA1_dO1=np.exp(-O1)/(1+np.exp(-O1))**2
+  except:
+    dA1_dO1=np.exp(-O1*0)/(1+np.exp(-O1*0))**2
+
+  dO1_dW1=X[0]
+
+  dO1_dB=1
+  #############
+
+
+
+  w2up=eta*dE_dO2*dO2_dW2
+  
+  w1up=eta*np.array([dE_dO2*dO2_dA1*dA1_dO1*x for x in dO1_dW1]).T#dE_dO2*dO2_dA1*dA1_dO1*dO1_dW1
+  bup=eta*dE_dO2*dO2_dA1*dA1_dO1*dO1_dB#dE_dO2*dO2_dA1*dO1*dO1_dB
+
+  #######################
+    
+  return ((w2up, w1up, bup, dE_dO2))
+def update(w2up, w1up, bup, W1, W2, B):
+
+  W1C=copy.deepcopy(W1); W2C=copy.deepcopy(W2); BC=copy.deepcopy(B)
+  try:
+    W1=W1-w1up #eta*np.array([dE_dO2*dO2_dO1,dE_dO2*dO2_dO1]).T*dO1_dW1
+    W2=W2-w2up #eta*dE_dO2*dO2_dO1*dO1_dW2
+    B=B-bup #eta*dE_dO2*dO2_dO1*dO1_dB
+  except:
+    W1=W1C; W2=W2C; B=BC
+
+
+
+  return (W1,W2,B)
+#print("A1 B:",A1)
+
+for i in range(epochs):
+  # ss=[(xs[i],ys[i],100) for i in range(len(xs))]
+  # ss_2=[(xs_2[i],ys_2[i],-100) for i in range(len(xs_2))]
+  if sum(np.isnan(W1))[0]>0:#==n:
+    W1=np.array(np.random.normal(0, 1, n*2)).reshape(n,2)
+  if sum(np.isnan(B))>0:#=n:
+    B=np.array(np.random.normal(0, 1, n))
+  if sum(np.isnan(W2))>0:#==n:
+    W2=np.array(np.random.normal(0, 1, n))
+  df=pd.concat([pd.DataFrame(ss), pd.DataFrame(ss_2)])
+  #df=df.sample(frac=1).reset_index(drop=True)
+
+
+
+  #df_z=pd.DataFrame(l)
+  #df_z=df_z.sample(frac=1).reset_index(drop=True)
+
+
+
+  #df=pd.concat([df, df_z[:300]])
+
+  df=df.sample(frac=1).reset_index(drop=True)
+
+
+
+
+
+  testfrac=0.11490758505840
+  thresh=int(len(df)*testfrac)
+  #test=df[:thresh]
+  train=df[thresh:]
+  
+
+  
+    
+
+  
+  #if i%25==0:
+  print('\r',i, end='')
+
+
+  if i%25==0:
+    #clear_output(wait=True)
+    #plot1(W1,W2,B,1.0043)
+    #print(W1,"\t",W2,"\t",B)
+    # print(W1.reshape(-1,1))
+    
+    plot2(W1,W2,B,train,.868248585025,False)
+
+
+
+
+  err=[]
+ 
+
+  for j in list(range(0,len(train),BATCH)):
+    w2up=[]; w1up=[]; bup=[]
+    loss=[] 
+  # print(train[j:j+BATCH])
+  # print(i)
+
+    batch=train[j:j+BATCH]
+
+    for row in batch.iterrows():
+
+       x1=row[1][0]; x2=row[1][1]; y=row[1][2]
+     
+
+    #x1,x2,y_=train.iloc[0]
+       x1=np.array(x1)
+       x2=np.array(x2)
+       y=np.array(y)
+
+       #print("W1={},W2={},B={},X={},n={}".format(W1,W2,B,[[x1,x2]],n))
+       FWD=forward(W1,W2,B,[[x1,x2]])
+ 
+      #print(As[0])
+       
+       A1=FWD[0]
+       A2_sum=FWD[1]
+       A2=FWD[2]
+       O2=FWD[3]
+       O1=FWD[4]
+       Z1=FWD[5]
+
+       BCK=backward(eta,y,A1,A2_sum,W1,W2,[[x1,x2]],B, A2,i,O2,O1,Z1)
+       
+       dE_dO2=np.abs(BCK[3] )
+        
+       w2up.append(BCK[0]); w1up.append(BCK[1]); bup=BCK[2]  
+       #print("O2 = ", O2, "y=",y)
+
+       #print("y = ", y)
+       #loss.append(-y*np.log((sigmoid(O2)))-(1-y)*np.log(1-(sigmoid(O2))))
+       #loss.append(-y*np.log(((O2)))-(1-y)*np.log((1-((O2)))))
+       loss.append((1-y)*(1-dE_dO2)+y*dE_dO2)
+       #print("dE/dO2= ", dE_dO2, "\ty=",y)  
+       #print("loss = ", loss)
+
+    w2up=sum(w2up); w1up=sum(w1up); bup=sum(bup)
+    
+    
+    UP=update(w2up, w1up, bup, W1, W2, B)
+    
+
+  
+
+
+    W1=UP[0]; W2=UP[1]; B=UP[2]; 
+  
+  #print("LOSS = ", np.mean(loss))

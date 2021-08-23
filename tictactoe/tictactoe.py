@@ -47,10 +47,10 @@ def actions(board):
                 tups.update([(r,c)])
     
     if len(tups)>0:# and winner(board) is None:
-        print("TUPS:",tups)
+#        print("TUPS:",tups)
         return(tups)
     else:
-        print("NOhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgjNE")
+#        print("NOhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgjNE")
         return(None)
 
 
@@ -124,19 +124,19 @@ def checkBoard(boardc, sumsc, mins, maxs, player_):
     board=copy.deepcopy(boardc)
     boards=list()
     boards.append(board)
-    print("checkboardr iter\n", board)
+#    print("checkboardr iter\n", board)
     
     while len(boards)>0:
         boards2=list()
         for board in boards:
             actions_=actions(board)
             for action in actions_:
-                print("action:",action)
+               # print("action:",action)
                 boardx=result(board,action)
                 if terminal(boardx):
-                    print("BEFORE: util:",utility(boardx),"\tsums:",sums, "mins:",mins)
+                   # print("BEFORE: util:",utility(boardx),"\tsums:",sums, "mins:",mins)
                     sums=utility(boardx)
-                    print("AFTER: util:",utility(boardx),"\tsums:",sums, "mins:",mins)
+                   # print("AFTER: util:",utility(boardx),"\tsums:",sums, "mins:",mins)
                     if player_==X and sums<=-1:
                         return None, 0
                     if player_==O and sums>maxs:
@@ -144,9 +144,9 @@ def checkBoard(boardc, sumsc, mins, maxs, player_):
                
                 else:
                     boards2.append(boardx)
-        print("boards2:",boards2)
+      #  print("boards2:",boards2)
         boards=boards2
-    print("board----------{},\tsums:-------{}".format(boardc,sums))
+  #  print("board----------{},\tsums:-------{}".format(boardc,sums))
     return(boardc,sums)
 	
        

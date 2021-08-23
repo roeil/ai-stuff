@@ -71,17 +71,29 @@ knowledge3 = And(
       Or(BKnave,BKnight),
       Or(CKnave,CKnight),
 
-   
+   	  
+	  
+	  
       Not(And(BKnave, BKnight)),
       Not(And(AKnave, AKnight)),
       Not(And(CKnave, CKnight)),
       
-      Implication(AKnight, BKnave),
-      Implication(BKnave, CKnight),
-      Implication(BKnave, CKnave),
-      Biconditional(BKnight, AKnave),
+	  
+	  Implication(BKnight, And(AKnave,CKnave)),
+	  #Implication(BKnight, CKnave),
+	  Implication(BKnave, And(CKnight,AKnight)),
+#	  Implication(CKnight, AKnight),
+	  Implication(CKnave, And(AKnave,BKnave))
+	  
+      #Implication(AKnight, BKnave)
+      #Implication(BKnave, CKnight),
+      #Implication(BKnave, CKnave)
+   #   Biconditional(BKnight, AKnave),
 
-      Implication(BKnight, CKnave)
+ #     Implication(BKnight, CKnave),
+#	  
+	 # Implication(CKnave, AKnave),
+	#  Implication(CKnight, AKnight)
       #Implication(CKnave, And(BKnight,AKnave))
 
       

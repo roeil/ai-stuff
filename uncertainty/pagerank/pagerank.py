@@ -12,7 +12,7 @@ def main():
     if len(sys.argv) != 2:
         sys.exit("Usage: python pagerank.py corpus")
     corpus = crawl(sys.argv[1])
-    print(corpus)
+    #(corpus)
     ranks = sample_pagerank(corpus, DAMPING, SAMPLES)
     print("PageRank Results from Sampling (n = {})".format(SAMPLES))
     for page in sorted(ranks):
@@ -59,9 +59,9 @@ def transition_model(corpus, page, damping_factor):
     linked to by `page`. With probability `1 - damping_factor`, choose
     a link at random chosen from all pages in the corpus.
     """
-    #print("DF: ", damping_factor)
+    
     probs=dict()
-    #print('APGE=',page)
+
     ln=len(corpus[page])
     
     ln2=len(corpus.keys())
@@ -77,13 +77,11 @@ def transition_model(corpus, page, damping_factor):
             probs[k]+=revDamp
         else:
             probs[k]=revDamp
-#    if ln==0:
-#        for k in corpus.keys():
-#            probs[k]+=dampZero
+
         
-    #print("probs: ", probs)
+
     return probs
-    #raise NotImplementedError
+
 
 
 def sample_pagerank(corpus, damping_factor, n):
@@ -95,9 +93,7 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    #print('page= ',list(corpus.keys())[1])
-    #transition_model(corpus, list(corpus.keys())[1], damping_factor)
-    
+     
 
     page = random.sample(corpus.keys(), 1)[0]
 
@@ -118,7 +114,7 @@ def sample_pagerank(corpus, damping_factor, n):
         
     #print(pagelist)
     list_set_pagelist=list(set(pagelist))
-    print("list_set_pagelist= ",list_set_pagelist)
+    #print("list_set_pagelist= ",list_set_pagelist)
     freq=[pagelist.count(x)/len(pagelist) for x in list_set_pagelist]
     #list_pagelist=list(set_pagelist)
     for i in range(len(freq)):

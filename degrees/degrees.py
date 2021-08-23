@@ -77,7 +77,7 @@ def main():
         degrees = len(path)
         print("{} degrees of separation.".format(degrees))
         path = [(None, source)] + path
-        print("\n\n**************",path,'**************\n\n\n')
+#        print("\n\n**************",path,'**************\n\n\n')
         for i in range(degrees):
             person1 = people[path[i][1]]["name"]
             person2 = people[path[i + 1][1]]["name"]
@@ -98,7 +98,6 @@ def shortest_path(source, target):
     #raise NotImplementedError
 
     node=Node(source,None,None)
-    print(node.state)
     qf=QueueFrontier()
     #qf.frontier.append((None,source))
     qf.add(node)
@@ -112,14 +111,14 @@ def shortest_path(source, target):
     f=True
     while f:
 
-        print('p:',parents)
+        #print('p:',parents)
         for p in parents:
-            #print(type(p))
+
             nfpS=neighbors_for_person(p)
        
             
 
-            #print(nfpS)
+
             for m,a in nfpS:
                 parents2.append(a)
                 qf.add(Node(a,p,m))
@@ -128,9 +127,9 @@ def shortest_path(source, target):
                 
                 if a==target:
                     
-                        #print("<<<<<<<<<<<<<<<-------------",qf.frontier)
+                        
                         for node in qf.frontier:
-                            #print("************",node.state)
+                        
                             path.append((node.state,node.parent,node.action))
                         path.reverse()
                         #print(path)
@@ -145,12 +144,12 @@ def shortest_path(source, target):
 
                         path2.reverse()
                         path2=path2+[(a,p,m)]                        
-                        print(path)
+                        #print(path)
                         path=list()
                         for sta,par,mov in path2:
                             path.append((mov,sta))
                         
-                        print()
+
                         return(path)
                         
                         break;
@@ -190,7 +189,7 @@ def neighbors_for_person(person_id):
     Returns (movie_id, person_id) pairs for people
     who starred with a given person.
     """
-    print('person_id=',person_id)
+    #print('person_id=',person_id)
     movie_ids = people[person_id]["movies"]
     
    
